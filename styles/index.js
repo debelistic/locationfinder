@@ -2,7 +2,14 @@ import {StyleSheet} from 'react-native'
 
 export const authStyles = StyleSheet.create({
   container: {
-    width: '80%',
+    width: '100%',
+    backgroundColor: '#fff',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  formWrapper: {
+    width: '80%'
   },
   textInput: {
     borderBottomWidth: 2,
@@ -13,6 +20,7 @@ export const authStyles = StyleSheet.create({
   btn: {
     margin: 40,
     height: 70,
+    fontWeight: '900'
   },
   forget: {
     textAlign: 'center',
@@ -29,6 +37,6 @@ export const authStyles = StyleSheet.create({
   },
   smallLink: {
     color: '#27c7d2',
-    marginLeft: 20
+    marginVertical: 20
   }
 })

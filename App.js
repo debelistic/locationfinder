@@ -3,16 +3,11 @@ import { StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard } from 'reac
 import {
   LoginScreen
 } from './screens'
+import Auth from './routes/authRoutes'
 
 export default function App() {
   return (
-    <TouchableWithoutFeedback 
-      onPress={() => Keyboard.dismiss()}
-    >
-      <View style={styles.container}>
-        <LoginScreen />
-      </View>
-    </TouchableWithoutFeedback>
+    <Auth />
   );
 }
 
