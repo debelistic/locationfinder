@@ -22,7 +22,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "debe.vadev.com"
+    },
+    "android": {
+      "package": "debe.vadev.com"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }

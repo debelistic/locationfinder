@@ -16,7 +16,19 @@ export const authStyles = StyleSheet.create({
   },
   forget: {
     textAlign: 'center',
-    margin: 20
+    alignItems: 'center',
+    margin: 20,
+    fontSize: 1
+  },
+  smallFont: {
+    fontSize: 12
+  },
+  errMsg: {
+    fontSize: 10,
+    color: 'red',
+  },
+  smallLink: {
+    color: '#27c7d2',
+    marginLeft: 20
   }
-
 })

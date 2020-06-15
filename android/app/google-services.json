@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "18695512996",
+    "firebase_url": "https://locationfinder-287cc.firebaseio.com",
+    "project_id": "locationfinder-287cc",
+    "storage_bucket": "locationfinder-287cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18695512996:android:92fa76d25c37d5503d5731",
+        "android_client_info": {
+          "package_name": "debe.vadev.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18695512996-9o9nneacuqrdjkg9ji7ut9n8t1a86sp1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvLwkfPAqRGbEQn3AqT--8vroI8mtRJE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18695512996-9o9nneacuqrdjkg9ji7ut9n8t1a86sp1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "18695512996-0usnn6e390mn9j0ug0hj8slesb7odica.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "debe.vadev.com"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
