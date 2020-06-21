@@ -17,6 +17,13 @@ export const authStyles = StyleSheet.create({
     padding: 8,
     marginBottom: 14,
   },
+  title: {
+    fontWeight: '900',
+    color: '#27c7d2',
+    fontSize: 26,
+    margin: 10,
+    padding: 5
+  },
   btn: {
     margin: 40,
     height: 70,
@@ -38,5 +45,6 @@ export const authStyles = StyleSheet.create({
   smallLink: {
     color: '#27c7d2',
     marginVertical: 20
-  }
+  },
+  
 })
