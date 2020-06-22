@@ -53,6 +53,8 @@ local.properties
 node_modules/
 npm-debug.log
 yarn-error.log
+android/
+ios/
 
 # BUCK
 buck-out/
@@ -79,5 +81,3 @@ buck-out/
 # Expo
 .expo/*
 web-build/
-android/
-ios/
