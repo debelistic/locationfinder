@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#27c7d2"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,7 +22,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "debe.vadev.com"
+    },
+    "android": {
+      "package": "debe.vadev.com"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
