@@ -25,7 +25,7 @@ export default function App() {
   useEffect(() => {
     (async () => await getData())()
   }, [])
-  return /*user ? <PropertiesScreen /> : */<Auth />
+  return user ? <PropertiesScreen /> : <Auth />
 }
 
 const styles = StyleSheet.create({
