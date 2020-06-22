@@ -1,36 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, Text, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
+import auth, { firebase } from '@react-native-firebase/auth'
+
 import {
   LoginScreen, PropertiesScreen
 } from './screens'
 import Auth from './routes/authRoutes'
 
-const getData = async () => {
-  try {
-    const jsonValue = await AsyncStorage.getItem(user)
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch(e) {
-    console.log('while getting user', e)
-    return 'user not found'
-  }
-}
-
 export default function App() {
   const [user, setUser] = useState({})
+  const getData = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('user')
+      const user = JSON.parse(jsonValue)
+      setUser(user)
+      auth().signInWithEmailAndPassword(user.email, user.password).then(() => console.log('user in')).catch((e) => console.log(e))
+      return 'done';
+    } catch(e) {
+      console.log('while getting user', e)
+      return 'user not found'
+    }
+  }
   useEffect(() => {
-    
-    const user = (async () => getData())()
-    setUser(user)
-    console.log('here>>', user)
-    // const user = await getData
-    // console.log(user)
-    // return setUser(user)
-  })
-  console.log('here now', user)
-  if(user === `while getting user [ReferenceError: Can't find variable: user]`) return <LoginScreen />
-  console.log(Object.keys(user).length, '>>b3')
-  return user ? <PropertiesScreen /> : <LoginScreen />
+    (async () => await getData())()
+  }, [])
+  return /*user ? <PropertiesScreen /> : */<Auth />
 }
 
 const styles = StyleSheet.create({

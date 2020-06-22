@@ -7,6 +7,19 @@ import auth from '@react-native-firebase/auth'
 import { authStyles } from '../styles'
 import * as yup from 'yup'
 
+
+const storeData = async (key, value) => {
+  try {
+    const jsonValue = JSON.stringify(value)
+    await AsyncStorage.setItem(key, jsonValue)
+    return 'done'
+  } catch (e) {
+    // saving error
+    console.log('while storing user', e)
+    return 'error'
+  }
+}
+
 const signupValidation = yup.object({
   email: yup.string()
             .required()
@@ -21,7 +34,10 @@ const signupValidation = yup.object({
 
 export default function SignupScreen({ navigation }) {
   const submit = ({email, password}) => {
-    auth().createUserWithEmailAndPassword(email, password).then(res => {
+    auth().createUserWithEmailAndPassword(email, password).then(async (res) => {
+      const {uid} = res.user
+      const user = {email, password, uid}
+      await storeData('user', user)
       navigation.navigate('Properties')
     }).catch(error => {
       let message

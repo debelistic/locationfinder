@@ -6,6 +6,19 @@ import { Formik } from 'formik'
 import auth from '@react-native-firebase/auth'
 import { authStyles } from '../styles'
 import * as yup from 'yup'
+import AsyncStorage from '@react-native-community/async-storage'
+
+const storeData = async (key, value) => {
+  try {
+    const jsonValue = JSON.stringify(value)
+    await AsyncStorage.setItem(key, jsonValue)
+    return 'done'
+  } catch (e) {
+    // saving error
+    console.log('while storing user', e)
+    return 'error'
+  }
+}
 
 const loginValidation = yup.object({
   email: yup.string()
@@ -19,9 +32,13 @@ const loginValidation = yup.object({
 
 export default function LoginScreen({ navigation }) {
   const submit = ({email, password}) => {
-    auth().signInWithEmailAndPassword(email, password).then(res => {
+    auth().signInWithEmailAndPassword(email, password).then(async (res) => {
+      const {uid} = res.user
+      const user = {email, password, uid}
+      await storeData('user', user)
       navigation.navigate('Properties')
     }).catch(error => {
+      console.log(error)
       let message
       if(error.code.trim() === 'auth/user-not-found') message = 'User not found. \n Check email and password'
       if(error.code.trim() === 'auth/network-request-failed') message = 'Check your Internet connection'
@@ -80,3 +97,7 @@ export default function LoginScreen({ navigation }) {
   )
 }
 
+
+
+// {"additionalUserInfo": {"isNewUser": false, "profile": null, "providerId": "password", "username": null}, 
+// "user": {"displayName": null, "email": "victor@gmail.com", "emailVerified": false, "isAnonymous": false, "metadata": [Object], "phoneNumber": null, "photoURL": null, "providerData": [Array], "providerId": "firebase", "refreshToken": "AE0u-Nchfo1a3LkBXijyFipk06uz04yi94UFPth5iRrGXC4ezbWhZoQe3Yjuynzdah4JiqIh89KxMxY3-4DGrlfulv1iqTo9dFX8IiUBuK8tH0uQeDsYqMhoCsCTPZ6iow08HSu-Ue7vJoX22hAfkVFEYBwVA-TpmU6389UTGZJlHYfbUMaMSwoaIyfFpzCFm6-KP_dzqbLRFJI0Jk4jZWPTNfuTn5qMrA", "uid": "ZPK2xHmI0iXU2nLEKm06RkFo4lc2"}}

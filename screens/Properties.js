@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, Image } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import { authStyles } from '../styles'
 
 
 export default function App({navigation}) {
+  
   const [data, setData] = useState([
     {id:1,name:"Eastwood",location:"664 Kenwood Alley",description:"kkeane0@live.com",imgUrl:"https://robohash.org/laborefugiatsit.png?size=50x50&set=set1",price:"$631.45"},
     {id:2,name:"Steensland",location:"285 Truax Place",description:"fpund1@dropbox.com",imgUrl:"https://robohash.org/etundevoluptas.jpg?size=50x50&set=set1",price:"$763.31"},
@@ -27,9 +29,8 @@ export default function App({navigation}) {
     {id:18,name:"Hanson",location:"11824 Main Pass",description:"aseawellh@mtv.com",imgUrl:"https://robohash.org/consequaturrepellenduseaque.bmp?size=50x50&set=set1",price:"$334.65"},
     {id:19,name:"Tennyson",location:"18 Chive Court",description:"mpiresi@wiley.com",imgUrl:"https://robohash.org/dolorumomnismolestiae.bmp?size=50x50&set=set1",price:"$728.45"},
     {id:20,name:"Sycamore",location:"963 Northridge Plaza",description:"mgrutej@seattletimes.com",imgUrl:"https://robohash.org/rationevoluptastempora.jpg?size=50x50&set=set1",price:"$505.43"}
-  ])
- 
-
+  ]) 
+  const [user, setUser] = useState({})
  
   return(
     <SafeAreaView style={authStyles.container}>
@@ -42,8 +43,8 @@ export default function App({navigation}) {
           
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.item}>
-              <Text>{item.name}</Text>
-              <Image source={item.imgUrl}/>
+              <Image source={{uri:"https://placeimg.com/640/480/arch"}} style={styles.image}/>
+              <Text style={styles.text}>{item.name}</Text>
             </TouchableOpacity>
           )}
         >
@@ -57,12 +58,31 @@ export default function App({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'red',
+    backgroundColor: 'transparent',
     flex: 1,
     width: '90%',
-    alignContent: 'space-between'
+    alignContent: 'center',
   },
   item: {
-    justifyContent: 'space-between'
+    flexDirection: 'column',
+    backgroundColor: 'transparent',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 100,
+    margin: 12,
+    height: 100,
+  },
+  image: {
+    height: 80,
+    width: 100,
+    backgroundColor: 'grey'
+  },
+  text: {
+    // justifyContent:
+    textAlign: 'center',
+    // borderWidth: 2,
+    width: 100,
+    color: '#27c7d2',
+    // backgroundColor: ''
   }
 })
